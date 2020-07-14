@@ -1,0 +1,43 @@
+*, *::before, *::after{
+  background-origin: border-box;
+}
+
+html, body, .content{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body{
+  background-color: $bg;
+  font: $font;
+  color: $color;
+  line-height: 1.5;
+  display: grid;
+  grid-auto-rows: 1fr auto;
+  grid-template-areas:
+  "main"
+  "footer";
+}
+a{
+  text-decoration: none;
+  color: lighten($color,5%);
+  outline-color: $color;
+}
+.main {
+  grid-area: main;
+  justify-self: center;
+  align-self: center;
+  width: $mobileWidth;
+}
+.footer {
+  grid-area: footer;
+}
+.btn{
+  cursor: pointer;
+  border: none;
+  outline: none;
+  &:hover,&:focus{
+    
+  }
+}
