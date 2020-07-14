@@ -12,7 +12,7 @@ body{
   background-color: $bg;
   font: $font;
   color: $color;
-  line-height: 1.5;
+  line-height: 1.4;
   display: grid;
   grid-auto-rows: 1fr auto;
   grid-template-areas:
@@ -28,7 +28,6 @@ a{
   grid-area: main;
   justify-self: center;
   align-self: center;
-  width: $mobileWidth;
 }
 .footer {
   grid-area: footer;
@@ -38,6 +37,6 @@ a{
   border: none;
   outline: none;
   &:hover,&:focus{
-    
+
   }
 }

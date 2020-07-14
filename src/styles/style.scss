@@ -6,7 +6,10 @@
 }
 .title{
   margin-top: 0;
-  font-size: 16px;
+  font-size: 1.2em;
+  @media (min-width: $desktopBreak) {
+    font-size: 1.5em;
+  }
 }
 .btn{
   &_round{
@@ -31,9 +34,9 @@
 .post{
   position: relative;
   background-color:$cardBg;
-  border-radius: 10px;
-  overflow: hidden;
+  border-radius: $radius;
   box-shadow: 0px 30px 30px -30px rgba($darkGrayishBlue,.2);
+  width: $mobileWidth;
 
   display: grid;
   grid-template-areas:
@@ -41,14 +44,30 @@
     "content"
     "details";
 
+  @media (min-width: $desktopBreak) {
+    width: $desktopWidth;
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas:
+      "img content"
+      "img details";
+  }
+
   &_img{
     width: 100%;
     height: 200px;
     grid-area: img;
+    border-radius: $radius $radius 0 0;
+    @media (min-width: $desktopBreak) {
+      border-radius: $radius 0 0 $radius;
+      height: 100%;
+    }
   }
   &_content{
     grid-area: content;
     padding: $gap;
+    @media (min-width: $desktopBreak) {
+      padding: $gap $gap / 3 * 4;
+    }
   }
   &_info{
     display: flex;
@@ -63,6 +82,9 @@
     align-items: center;
     gap: $gap/2;
     padding: 0 $gap $gap / 3 * 2;
+    @media (min-width: $desktopBreak) {
+      padding: 0 $gap $gap
+    }
   }
   &_share{
     position: absolute;
@@ -70,11 +92,11 @@
     right: 0;
     bottom: 0;
 
-    height: 76px;
+    height: 72px;
 
     display: none;
     align-items: center;
-
+    border-radius: 0 0 $radius $radius;
     background-color: $darkGrayishBlue;
     color: $darkBlue;
     padding: 0 $gap;
@@ -84,6 +106,29 @@
     }
     &.visible{
       display: flex;
+    }
+
+    @media (min-width: $desktopBreak) {
+      left: unset;
+      height: unset;
+      border-radius: $radius;
+      padding: $gap / 2 $gap / 3 * 4;
+      box-shadow: 0px 10px 10px -5px rgba($darkGrayishBlue,.2);
+      height: 56px;
+      bottom: 90px;
+      right: -78px;
+
+      &:after{
+        content:'';
+        position: absolute;
+        left: calc(50% - 12px);
+        bottom: -24px;
+        width: 0;
+        height: 0;
+        border-width: 12px;
+        border-style: solid;
+        border-color: $darkGrayishBlue transparent transparent transparent;
+      }
     }
   }
   .label{
